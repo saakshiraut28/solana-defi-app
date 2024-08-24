@@ -14,8 +14,8 @@ import { clusterApiUrl } from "@solana/web3.js";
 // Default styles that can be overridden by your app
 import "@solana/wallet-adapter-react-ui/styles.css";
 import Navbar from "./components/ui/navbar";
-import CoinContextProvider from "./context/coinContext";
 import AllCoins from "./components/allCoin";
+import CoinContextProvider from "./context/coinContext";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;

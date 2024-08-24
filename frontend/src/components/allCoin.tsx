@@ -18,25 +18,44 @@ function AllCoins() {
   return (
     <div>
       <h3>All Coins Data</h3>
-      <div>
-        <table>
-          <thead>
+      <div className="mx-2 lg:mx-8 my-8 px-4 py-4">
+        <table className="border-gray-300 border min-w-full">
+          <thead className="border-gray-300 bg-gray-100 border-b text-black">
             <tr>
-              <th>#</th>
-              <th>Coins</th>
-              <th>Price</th>
-              <th>24H Change</th>
-              <th>Market Cap</th>
+              <th className="px-4 py-2 border-r">#</th>
+              <th className="px-4 py-2 border-r">Coins</th>
+              <th className="px-4 py-2 border-r">Price</th>
+              <th className="px-4 py-2 border-r">24H Change</th>
+              <th className="px-4 py-2">Market Cap</th>
             </tr>
           </thead>
           <tbody>
-            {displayCoin.slice(0, 10).map((item, index) => (
-              <tr key={item.id}>
-                <td>{item.market_cap_rank}</td>
-                <td>{item.name}</td>
-                <td>{item.current_price}</td>
-                <td>{item.price_change_percentage_24h}</td>
-                <td>{item.market_cap}</td>
+            {displayCoin.slice(0, 10).map((item) => (
+              <tr key={item.id} className="border-gray-300 border-b">
+                <td className="px-4 py-2">{item.market_cap_rank}</td>
+                <td className="flex items-center gap-3 px-4 py-2">
+                  <div>
+                    <img src={item.image} width={20} height={20} />
+                  </div>
+                  <p>{item.name}</p>
+                </td>
+                <td className={`px-4 py-2`}>
+                  {currency.symbol}
+                  {item.current_price.toLocaleString()}
+                </td>
+                <td
+                  className={`px-4 py-2 ${
+                    item.price_change_percentage_24h > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
+                  {item.price_change_percentage_24h}
+                </td>
+                <td className="px-4 py-2">
+                  {currency.symbol}
+                  {item.market_cap.toLocaleString()}
+                </td>
               </tr>
             ))}
           </tbody>
