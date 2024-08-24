@@ -15,6 +15,7 @@ import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
 import Navbar from "./components/ui/navbar";
 import CoinContextProvider from "./context/coinContext";
+import AllCoins from "./components/allCoin";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;
@@ -34,6 +35,7 @@ function App() {
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
             <Navbar />
+            <AllCoins />
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
