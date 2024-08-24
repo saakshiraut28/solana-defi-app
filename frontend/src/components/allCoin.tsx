@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoinContext } from "../context/coinContext";
 
 function AllCoins() {
