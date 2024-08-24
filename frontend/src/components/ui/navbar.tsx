@@ -2,6 +2,7 @@
 
 import React, { useContext } from "react";
 import { CoinContext } from "../../context/coinContext";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Navbar: React.FC = () => {
   const context = useContext(CoinContext);
@@ -37,6 +38,7 @@ const Navbar: React.FC = () => {
         <option value="eur">EUR</option>
         <option value="inr">INR</option>
       </select>
+      <WalletMultiButton>Connect</WalletMultiButton>
     </nav>
   );
 };
