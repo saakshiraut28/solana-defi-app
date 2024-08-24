@@ -1,60 +1,82 @@
 /** @format */
 
-// Navbar.tsx
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+} from "react";
 
-import React, { useContext } from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { CoinContext } from "../../context/coinContext";
+// Define an interface for the coin data structure
+interface Coin {
+  id: string;
+  name: string;
+  current_price: number;
+  price_change_percentage_24h: number;
+  market_cap: number;
+  market_cap_rank: number;
+}
 
-const Navbar: React.FC = () => {
-  const coinContext = useContext(CoinContext);
+// Define an interface for the context value
+interface CoinContextType {
+  allCoin: Coin[];
+  currency: {
+    name: string;
+    symbol: string;
+  };
+  setCurrency: Dispatch<SetStateAction<{ name: string; symbol: string }>>;
+}
 
-  if (!coinContext) {
-    throw new Error("CoinContext must be used within a CoinContextProvider");
-  }
+// Initialize the context with a default value
+export const CoinContext = createContext<CoinContextType | undefined>(
+  undefined
+);
 
-  const { setCurrency } = useContext(CoinContext);
+const CoinContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [allCoin, setAllCoin] = useState<Coin[]>([]);
+  const [currency, setCurrency] = useState<{ name: string; symbol: string }>({
+    name: "usd",
+    symbol: "$",
+  });
 
-  // Type annotation for the currencyHandler function
-  const currencyHandler: (e: React.ChangeEvent<HTMLSelectElement>) => void = (
-    e
-  ) => {
-    switch (e.target.value) {
-      case "usd":
-        setCurrency({ name: "usd", symbol: "$" });
-        break;
-      case "eur":
-        setCurrency({ name: "eur", symbol: "€" });
-        break;
-      case "inr":
-        setCurrency({ name: "inr", symbol: "₹" });
-        break;
-      default:
-        setCurrency({ name: "usd", symbol: "$" });
-        break;
+  const fetchAllCoin = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE",
+      },
+    };
+
+    try {
+      const response = await fetch(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`,
+        options
+      );
+      const data = await response.json();
+      setAllCoin(data);
+    } catch (err) {
+      console.error(err);
     }
   };
 
+  useEffect(() => {
+    fetchAllCoin();
+  }, [currency]);
+
+  const contextValue: CoinContextType = {
+    allCoin,
+    currency,
+    setCurrency,
+  };
+
   return (
-    <nav className="flex justify-between gap-4 px-4 py-4">
-      <p className="font-bold text-3xl">Logo</p>
-      <div className="flex items-center gap-2">
-        <label htmlFor="currency" className="mr-2">
-          Currency:
-        </label>
-        <select
-          id="currency"
-          onChange={currencyHandler}
-          className="p-2 border rounded"
-        >
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-          <option value="inr">INR</option>
-        </select>
-      </div>
-      <WalletMultiButton>Connect</WalletMultiButton>
-    </nav>
+    <CoinContext.Provider value={contextValue}>{children}</CoinContext.Provider>
   );
 };
 
-export default Navbar;
+export default CoinContextProvider;
