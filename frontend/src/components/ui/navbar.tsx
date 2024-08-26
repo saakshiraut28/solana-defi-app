@@ -44,8 +44,8 @@ const Navbar: React.FC = () => {
   }, [theme]);
 
   return (
-    <nav className="flex justify-between gap-4 bg-white dark:bg-black px-4 py-4 text-black dark:text-white">
-      <p className="font-bold text-xl">Defi</p>
+    <nav className="flex justify-between gap-4 bg-white dark:bg-black px-4 px-4 lg:px-24 py-4 text-black dark:text-white">
+      <p className="font-bold font-comfortaa text-xl">Defi</p>
       <select
         onChange={currencyHandler}
         className="px-4 border rounded-full text-sm"
