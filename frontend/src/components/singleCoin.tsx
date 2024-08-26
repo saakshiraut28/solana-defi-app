@@ -76,7 +76,7 @@ const SingleCoin = () => {
     };
 
     fetch(
-      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=10`,
+      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=10`,
       options
     )
       .then((response) => response.json())
@@ -89,7 +89,7 @@ const SingleCoin = () => {
       fetchCoinData();
       fetchHistoricalData();
     }
-  }, [coinId, historicalData]);
+  }, [coinId]);
 
   return (
     <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor h-screen">
@@ -151,7 +151,7 @@ const SingleCoin = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 border-gray-200 hover:border-white bg-clip-padding bg-gray-400 bg-opacity-10 shadow-lg backdrop-blur-sm backdrop-filter px-5 py-4 border rounded-xl">
+            <div className="flex-1 border-gray-200 hover:border-white bg-clip-padding bg-gray-400 bg-opacity-10 shadow-lg backdrop-blur-sm backdrop-filter px-5 py-1 border rounded-xl">
               <LineChart historicalData={historicalData} />
             </div>
           </div>
