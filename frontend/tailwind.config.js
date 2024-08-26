@@ -11,6 +11,15 @@ export default {
       fontFamily: {
         comfortaa: ["Comfortaa", "sans-serif"],
       },
+      colors: {
+        light: {
+          backgroundColor: "#F5F1F1",
+          green: "#6ADF6E",
+        },
+        dark: {
+          green: "#7EFF83",
+        },
+      },
     },
   },
   plugins: [],

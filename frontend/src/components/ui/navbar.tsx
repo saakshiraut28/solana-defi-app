@@ -44,22 +44,59 @@ const Navbar: React.FC = () => {
   }, [theme]);
 
   return (
-    <nav className="flex justify-between gap-4 bg-white dark:bg-black px-4 px-4 lg:px-24 py-4 text-black dark:text-white">
-      <p className="font-bold font-comfortaa text-xl">Defi</p>
-      <select
-        onChange={currencyHandler}
-        className="px-4 border rounded-full text-sm"
-      >
-        <option value="usd">USD</option>
-        <option value="eur">EUR</option>
-        <option value="inr">INR</option>
-      </select>
-      <div>
-        <button onClick={handleSwitch}>dark mode</button>
+    <nav className="flex justify-between items-center gap-4 bg-light-backgroundColor dark:bg-black px-4 lg:px-24 py-2 font-comfortaa text-black dark:text-white">
+      <p className="font-bold text-2xl">
+        <span className="text-light-green dark:text-dark-green">De</span>
+        <span>fi</span>
+      </p>
+      <div className="flex justify-between items-center gap-4">
+        <select
+          onChange={currencyHandler}
+          className="border-1 dark:border-white bg-transparent px-4 py-1 border border-black rounded-full text-md"
+        >
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="inr">INR</option>
+        </select>
+        <div className="border-1 dark:border-white px-1 py-1 border border-black rounded-full">
+          {theme === "light" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
+              onClick={handleSwitch}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
+              onClick={handleSwitch}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+              />
+            </svg>
+          )}
+        </div>
+        <WalletMultiButton className="bg-light-green rounded-full w-96">
+          Connect
+        </WalletMultiButton>
       </div>
-      <WalletMultiButton className="rounded-full w-96">
-        Connect
-      </WalletMultiButton>
     </nav>
   );
 };
