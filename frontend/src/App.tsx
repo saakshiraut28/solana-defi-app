@@ -34,8 +34,10 @@ function App() {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
-            <Navbar />
-            <AllCoins />
+            <div className="px-4 lg:px-24">
+              <Navbar />
+              <AllCoins />
+            </div>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>

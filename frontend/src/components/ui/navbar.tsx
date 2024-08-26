@@ -32,13 +32,18 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="flex justify-between gap-4 px-4 py-4">
-      <p className="font-bold text-3xl">Logo</p>
-      <select onChange={currencyHandler} className="px-2 py-1 border rounded">
+      <p className="font-bold text-xl">Defi</p>
+      <select
+        onChange={currencyHandler}
+        className="px-4 border rounded-full text-sm"
+      >
         <option value="usd">USD</option>
         <option value="eur">EUR</option>
         <option value="inr">INR</option>
       </select>
-      <WalletMultiButton>Connect</WalletMultiButton>
+      <WalletMultiButton className="rounded-full w-96">
+        Connect
+      </WalletMultiButton>
     </nav>
   );
 };

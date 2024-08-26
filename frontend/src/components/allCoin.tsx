@@ -34,17 +34,20 @@ function AllCoins() {
 
   return (
     <div>
-      <h3>All Coins Data</h3>
-      <form onSubmit={searchHandler}>
-        <input
-          required
-          value={input}
-          onChange={inputHandler}
-          type="text"
-          placeholder="Search Coin or Token"
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className="flex flex-col justify-center items-center w-full">
+        <p className="py-4 font-bold text-2xl">All Coins Data</p>
+        <form onSubmit={searchHandler}>
+          <input
+            required
+            value={input}
+            onChange={inputHandler}
+            type="text"
+            placeholder="Search Coin or Token"
+            className="px-4 py-2"
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
 
       <div className="mx-2 lg:mx-8 my-8 px-4 py-4">
         <table className="border-gray-300 border min-w-full">

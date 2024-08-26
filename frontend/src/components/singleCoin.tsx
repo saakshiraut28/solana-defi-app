@@ -13,6 +13,10 @@ interface CoinData {
   symbol: string;
 }
 
+interface HistoricalData {
+  prices: [number, number][];
+}
+
 const SingleCoin = () => {
   const coinContext = useContext(CoinContext);
   if (!coinContext) {
@@ -23,7 +27,9 @@ const SingleCoin = () => {
   const { coinId } = useParams<{ coinId: string }>();
 
   const [coinData, setCoinData] = useState<CoinData | null>(null);
-  const [historicalData, setHistoricalData] = useState({});
+  const [historicalData, setHistoricalData] = useState<HistoricalData>({
+    prices: [],
+  });
 
   const fetchCoinData = async () => {
     const options = {
@@ -51,22 +57,26 @@ const SingleCoin = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE	",
+        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE",
       },
     };
 
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=10`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setHistoricalData(response))
-      .catch((err) => console.error(err));
+    try {
+      const response = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=10`,
+        options
+      );
+      const data: HistoricalData = await response.json();
+      setHistoricalData(data);
+    } catch (err) {
+      console.error("Failed to fetch historical data:", err);
+    }
   };
 
   useEffect(() => {
     if (coinId) {
       fetchCoinData();
+      fetchHistoricalData();
     }
   }, [coinId]);
 
@@ -78,7 +88,9 @@ const SingleCoin = () => {
           <img src={coinData.image.large} alt={coinData.name} />
           <p>{coinData.name}</p>
           <p>{coinData.symbol}</p>
-          <div></div>
+          <div>
+            <LineChart historicalData={historicalData} />
+          </div>
         </div>
       ) : (
         <p>Loading...</p>
