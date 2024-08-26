@@ -94,7 +94,7 @@ function AllCoins() {
               </tr>
             </thead>
             <tbody>
-              {displayCoin.slice(0, 10).map((item, index) => (
+              {displayCoin.slice(0, 10).map((item) => (
                 <tr key={item.id} className="border-gray-300 border-b">
                   <td className="px-4 py-2">{item.market_cap_rank}</td>
                   <td className="flex items-center gap-3 px-4 py-2">

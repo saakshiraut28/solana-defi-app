@@ -1,6 +1,10 @@
 /** @format */
 
-import "./App.css";
+import { Route, Routes } from "react-router-dom"; // Import Routes and Route
+import AllCoins from "./components/allCoin";
+import SingleCoin from "./components/singleCoin";
+import Navbar from "./components/ui/navbar";
+import CoinContextProvider from "./context/coinContext";
 import { useMemo } from "react";
 import {
   ConnectionProvider,
@@ -11,23 +15,12 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
 
-// Default styles that can be overridden by your app
 import "@solana/wallet-adapter-react-ui/styles.css";
-import Navbar from "./components/ui/navbar";
-import AllCoins from "./components/allCoin";
-import CoinContextProvider from "./context/coinContext";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;
-
-  // You can also provide a custom RPC endpoint.
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  const wallets = useMemo(
-    () => [new PhantomWalletAdapter()],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [network]
-  );
+  const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
 
   return (
     <CoinContextProvider>
@@ -35,7 +28,10 @@ function App() {
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
             <Navbar />
-            <AllCoins />
+            <Routes>
+              <Route path="/" element={<AllCoins />} />
+              <Route path="/coin/:coinId" element={<SingleCoin />} />
+            </Routes>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
