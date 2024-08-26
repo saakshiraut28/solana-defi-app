@@ -1,10 +1,11 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CoinContext } from "../../context/coinContext";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Navbar: React.FC = () => {
+  const [theme, setTheme] = useState<string>("light");
   const context = useContext(CoinContext);
 
   if (!context) {
@@ -30,8 +31,20 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const handleSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
-    <nav className="flex justify-between gap-4 px-4 py-4">
+    <nav className="flex justify-between gap-4 bg-white dark:bg-black px-4 py-4 text-black dark:text-white">
       <p className="font-bold text-xl">Defi</p>
       <select
         onChange={currencyHandler}
@@ -41,6 +54,9 @@ const Navbar: React.FC = () => {
         <option value="eur">EUR</option>
         <option value="inr">INR</option>
       </select>
+      <div>
+        <button onClick={handleSwitch}>dark mode</button>
+      </div>
       <WalletMultiButton className="rounded-full w-96">
         Connect
       </WalletMultiButton>

@@ -35,8 +35,10 @@ function AllCoins() {
   return (
     <div>
       <div className="flex flex-col justify-center items-center w-full">
-        <p className="py-4 font-bold text-2xl">All Coins Data</p>
-        <form onSubmit={searchHandler}>
+        <p className="py-4 font-bold text-2xl dark:text-black text-white">
+          All Coins Data
+        </p>
+        <form onSubmit={searchHandler} className="">
           <input
             required
             value={input}
