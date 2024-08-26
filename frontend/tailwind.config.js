@@ -17,6 +17,7 @@ export default {
           green: "#6ADF6E",
         },
         dark: {
+          backgroundColor: "#090A09",
           green: "#7EFF83",
         },
       },

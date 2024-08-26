@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
   }, [theme]);
 
   return (
-    <nav className="flex justify-between items-center gap-4 bg-light-backgroundColor dark:bg-black px-4 lg:px-24 py-2 font-comfortaa text-black dark:text-white">
+    <nav className="flex justify-between items-center gap-4 bg-light-backgroundColor dark:bg-dark-backgroundColor px-4 lg:px-24 py-2 font-comfortaa text-black dark:text-white">
       <p className="font-bold text-2xl">
         <span className="text-light-green dark:text-dark-green">De</span>
         <span>fi</span>
