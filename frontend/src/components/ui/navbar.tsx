@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CoinContext } from "../../context/coinContext";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [theme, setTheme] = useState<string>("light");
@@ -45,10 +46,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="flex justify-between items-center gap-4 bg-light-backgroundColor dark:bg-dark-backgroundColor px-4 lg:px-24 py-2 font-comfortaa text-black dark:text-white">
-      <p className="font-bold text-2xl">
-        <span className="text-light-green dark:text-dark-green">De</span>
-        <span>fi</span>
-      </p>
+      <Link to="/">
+        <p className="font-bold text-2xl">
+          <span className="text-light-green dark:text-dark-green">De</span>
+          <span>fi</span>
+        </p>
+      </Link>
       <div className="flex justify-between items-center gap-4">
         <select
           onChange={currencyHandler}
@@ -93,6 +96,9 @@ const Navbar: React.FC = () => {
             </svg>
           )}
         </div>
+        <Link to="/swap">
+          <p>Swap</p>
+        </Link>
         <WalletMultiButton className="bg-light-green rounded-full w-96">
           Connect
         </WalletMultiButton>
