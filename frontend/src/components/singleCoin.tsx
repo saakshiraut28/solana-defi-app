@@ -50,7 +50,7 @@ const SingleCoin = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE",
+        "x-cg-demo-api-key": import.meta.env.VITE_COINGECKO_API_KEY || "",
       },
     };
 
@@ -71,12 +71,12 @@ const SingleCoin = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE	",
+        "x-cg-demo-api-key": import.meta.env.VITE_COINGECKO_API_KEY || "",
       },
     };
 
     fetch(
-      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=10`,
+      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10`,
       options
     )
       .then((response) => response.json())

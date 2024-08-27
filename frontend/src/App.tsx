@@ -16,6 +16,7 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
 
 import "@solana/wallet-adapter-react-ui/styles.css";
+import Swap from "./components/swap";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;
@@ -31,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<AllCoins />} />
               <Route path="/coin/:coinId" element={<SingleCoin />} />
+              <Route path="/swap" element={<Swap />} />
             </Routes>
           </WalletModalProvider>
         </WalletProvider>
