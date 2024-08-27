@@ -10,7 +10,6 @@ function AllCoins() {
     throw new Error("CoinContext must be used within a CoinContextProvider");
   }
 
-  const [loading, setLoading] = useState<boolean>(true);
   const { allCoin, currency } = coinContext;
   const [displayCoin, setDisplayCoin] = useState<any[]>([]);
   const [input, setInput] = useState("");
