@@ -50,7 +50,7 @@ const SingleCoin = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": import.meta.env.VITE_COINGECKO_API_KEY || "",
+        "x-cg-demo-api-key": "CG-39jigAWXdmoZB63GNKTsjTWE",
       },
     };
 

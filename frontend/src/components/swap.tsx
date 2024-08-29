@@ -168,6 +168,9 @@ export default function Swap() {
       <div className="relative flex justify-center w-1/3 h-1/2">
         <div className="flex flex-col flex-1 justify-center items-center border-gray-200 hover:border-white bg-clip-padding bg-gray-400 bg-opacity-10 shadow-lg backdrop-blur-sm backdrop-filter my-8 px-5 py-8 border rounded-xl">
           <div className="my-3 w-fit">
+            <p className="my-2 text-[#e54a4a]">
+              I&apos;m still working on this thing 🫂
+            </p>
             <div className="my-2 font-bold text-lg">You pay</div>
             <input
               type="number"
