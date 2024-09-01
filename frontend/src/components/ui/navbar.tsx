@@ -33,7 +33,9 @@ const Navbar: React.FC = () => {
   };
 
   const handleSwitch = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(theme === "dark" ? "light" : "dark");
+    localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {

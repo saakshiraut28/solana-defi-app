@@ -24,22 +24,20 @@ function App() {
   const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
 
   return (
-    <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor">
-      <CoinContextProvider>
-        <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect>
-            <WalletModalProvider>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<AllCoins />} />
-                <Route path="/coin/:coinId" element={<SingleCoin />} />
-                <Route path="/swap" element={<Swap />} />
-              </Routes>
-            </WalletModalProvider>
-          </WalletProvider>
-        </ConnectionProvider>
-      </CoinContextProvider>
-    </div>
+    <CoinContextProvider>
+      <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletModalProvider>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<AllCoins />} />
+              <Route path="/coin/:coinId" element={<SingleCoin />} />
+              <Route path="/swap" element={<Swap />} />
+            </Routes>
+          </WalletModalProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+    </CoinContextProvider>
   );
 }
 

@@ -39,7 +39,7 @@ function AllCoins() {
 
   if (allCoin) {
     return (
-      <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor w-full font-comfortaa text-black dark:text-white overflow-x-auto">
+      <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor w-full h-full min-h-screen font-comfortaa text-black dark:text-white overflow-x-auto">
         <div className="absolute">
           <img src={Bg} alt="something" />
         </div>

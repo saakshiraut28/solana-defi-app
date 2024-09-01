@@ -162,7 +162,7 @@ export default function Swap() {
   }
 
   return (
-    <div className="relative flex justify-center bg-light-backgroundColor dark:bg-dark-backgroundColor w-full h-full font-comfortaa text-black dark:text-white">
+    <div className="relative flex justify-center bg-light-backgroundColor dark:bg-dark-backgroundColor w-full h-full min-h-screen font-comfortaa text-black dark:text-white">
       <img src={Bg} alt="something" className="absolute inset-0 w-full" />
       <div className="relative flex justify-center w-1/3 h-1/2">
         <div className="flex flex-col flex-1 justify-center items-center border-gray-200 hover:border-white bg-clip-padding bg-gray-400 bg-opacity-10 shadow-lg backdrop-blur-sm backdrop-filter my-8 px-5 py-8 border rounded-xl">
