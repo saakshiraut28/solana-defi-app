@@ -51,7 +51,6 @@ export default function Swap() {
   const [fromAmount, setFromAmount] = useState(1);
   const [toAmount, setToAmount] = useState(0);
   const [quoteResponse, setQuoteResponse] = useState(null);
-  const rpc_url = import.meta.env.VITE_HELIUS_API_KEY;
 
   const wallet = useWallet();
 
