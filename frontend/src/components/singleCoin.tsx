@@ -92,11 +92,11 @@ const SingleCoin = () => {
   }, [coinId]);
 
   return (
-    <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor h-screen">
+    <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor h-full">
       <img src={Bg} alt="something" className="absolute" />
       {coinData && historicalData ? (
         <div className="relative flex flex-col gap-3 px-4 lg:px-24 py-8 w-full font-comfortaa text-black dark:text-white">
-          <p className="text-2xl">All about {coinData.name}!</p>
+          <p className="text-lg md:text-2xl">All about {coinData.name}!</p>
           <hr className="dark:border-white my-4 border-black w-full" />
           <div className="flex lg:flex-row flex-col gap-3 w-full h-full">
             <div className="flex flex-col w-full lg:w-1/2 h-full">

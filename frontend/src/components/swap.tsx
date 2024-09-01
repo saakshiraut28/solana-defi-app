@@ -162,11 +162,11 @@ export default function Swap() {
   }
 
   return (
-    <div className="relative flex justify-center bg-light-backgroundColor dark:bg-dark-backgroundColor w-full h-screen font-comfortaa text-black dark:text-white">
+    <div className="relative flex justify-center bg-light-backgroundColor dark:bg-dark-backgroundColor w-full h-full font-comfortaa text-black dark:text-white">
       <img src={Bg} alt="something" className="absolute inset-0 w-full" />
       <div className="relative flex justify-center w-1/3 h-1/2">
         <div className="flex flex-col flex-1 justify-center items-center border-gray-200 hover:border-white bg-clip-padding bg-gray-400 bg-opacity-10 shadow-lg backdrop-blur-sm backdrop-filter my-8 px-5 py-8 border rounded-xl">
-          <div className="my-3 w-fit">
+          <div className="gap-1 my-3 w-fit">
             <p className="my-2 text-[#e54a4a]">
               I&apos;m still working on this thing 🫂
             </p>
@@ -175,12 +175,12 @@ export default function Swap() {
               type="number"
               value={fromAmount}
               onChange={handleFromValueChange}
-              className="bg-light-backgroundColor dark:bg-dark-backgroundColor px-2 py-1 py-2 rounded-full text-sm outline-none"
+              className="bg-light-backgroundColor dark:bg-dark-backgroundColor my-1 px-2 py-2 rounded-full text-sm outline-none"
             />
             <select
               value={fromAsset.name}
               onChange={handleFromAssetChange}
-              className="bg-light-backgroundColor dark:bg-dark-backgroundColor mx-2 px-2 py-2 rounded-full text-sm"
+              className="bg-light-backgroundColor dark:bg-dark-backgroundColor my-1 px-2 py-2 rounded-full text-sm"
             >
               {assets.map((asset) => (
                 <option key={asset.mint} value={asset.name}>
@@ -189,18 +189,18 @@ export default function Swap() {
               ))}
             </select>
           </div>
-          <div className="my-3 w-fit">
+          <div className="gap-1 my-3 w-fit">
             <div className="my-2 font-bold text-lg">You receive</div>
             <input
               type="number"
               value={toAmount}
-              className="bg-light-backgroundColor dark:bg-dark-backgroundColor px-2 py-1 py-2 rounded-full text-sm outline-none"
+              className="bg-light-backgroundColor dark:bg-dark-backgroundColor my-1 px-2 py-2 rounded-full text-sm outline-none"
               readOnly
             />
             <select
               value={toAsset.name}
               onChange={handleToAssetChange}
-              className="bg-light-backgroundColor dark:bg-dark-backgroundColor mx-2 px-2 py-2 rounded-full text-sm"
+              className="bg-light-backgroundColor dark:bg-dark-backgroundColor my-1 px-2 py-2 rounded-full text-sm"
             >
               {assets.map((asset) => (
                 <option key={asset.mint} value={asset.name}>

@@ -39,13 +39,15 @@ function AllCoins() {
 
   if (allCoin) {
     return (
-      <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor w-full font-comfortaa text-black dark:text-white">
+      <div className="bg-light-backgroundColor dark:bg-dark-backgroundColor w-full font-comfortaa text-black dark:text-white overflow-x-auto">
         <div className="absolute">
           <img src={Bg} alt="something" />
         </div>
-        <div className="relative flex flex-col justify-center items-center py-4 w-full">
-          <p className="py-1 font-bold text-2xl">Welcome to Defi 🥰</p>
-          <p className="py-1 w-1/3 font-medium text-center text-lg">
+        <div className="relative flex flex-col justify-center items-center py-4 w-full overflow-x-auto">
+          <p className="py-1 font-bold text-lg md:text-2xl">
+            Welcome to Defi 🥰
+          </p>
+          <p className="px-4 py-1 md:w-1/3 font-medium text-center text-md md:text-lg">
             An application that provides robust features for wallet
             connectivity, token swapping, and real-time visualization of
             cryptocurrency prices
@@ -88,8 +90,8 @@ function AllCoins() {
               </svg>
             </button>
           </form>
-          <div className="mx-2 lg:mx-8 px-4 py-4">
-            <table className="border-gray-300 border min-w-full">
+          <div className="overflow-x-auto">
+            <table className="border-gray-300 border md:min-w-full">
               <thead className="border-gray-300 bg-gray-100 border-b text-black">
                 <tr>
                   <th className="px-4 py-2 border-r">#</th>
@@ -106,11 +108,16 @@ function AllCoins() {
                     <td className="px-4 py-2">{item.market_cap_rank}</td>
                     <td className="flex items-center gap-3 px-4 py-2">
                       <div>
-                        <img src={item.image} width={20} height={20} />
+                        <img
+                          src={item.image}
+                          width={20}
+                          height={20}
+                          alt={item.name}
+                        />
                       </div>
                       <p>{item.name}</p>
                     </td>
-                    <td className={`px-4 py-2`}>
+                    <td className="px-4 py-2">
                       {currency.symbol}
                       {item.current_price.toLocaleString()}
                     </td>
