@@ -48,7 +48,7 @@ const debounce = <T extends unknown[]>(
 export default function Swap() {
   const [fromAsset, setFromAsset] = useState(assets[0]);
   const [toAsset, setToAsset] = useState(assets[1]);
-  const [fromAmount, setFromAmount] = useState(0);
+  const [fromAmount, setFromAmount] = useState(1);
   const [toAmount, setToAmount] = useState(0);
   const [quoteResponse, setQuoteResponse] = useState(null);
   const rpc_url = import.meta.env.VITE_HELIUS_API_KEY;
@@ -56,7 +56,7 @@ export default function Swap() {
   const wallet = useWallet();
 
   const connection = new Connection(
-    `https://devnet.helius-rpc.com/?api-key=${rpc_url}`
+    `https://devnet.helius-rpc.com/?api-key=de6e67c1-5fc6-4b00-a1c8-c5700d6e38ce`
   );
 
   const handleFromAssetChange = async (
